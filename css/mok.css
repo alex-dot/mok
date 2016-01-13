@@ -32,6 +32,11 @@ a.with-icon {
     float: right;
 }
 
+form textarea {
+  width: 100%;
+  margin-bottom: 15px;
+}
+
 @media (min-width: 768px) {
   .video, .video video {
     width: 640px;

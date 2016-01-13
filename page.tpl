@@ -8,7 +8,6 @@
 % end
 
 <div class="page-header">
-  <a class="edit with-icon" href="/edit/blub"><span class="glyphicon glyphicon-pencil"> </span></a>
   <h1>{{video['title'].title()}}</h1>
 </div>
 <div class="video">

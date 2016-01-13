@@ -87,7 +87,10 @@ def page(db, pageid='afrika-pflegt-europa'):
 
 @route('/add', template='edit')
 def add(db):
-    return dict()
+    logged_in = check_token( request.get_cookie("token"), db )
+    if !logged_in:
+        abort(401, 'You are not logged in')
+    return dict(name=None, video=None, categories=None, logged_in=logged_in)
 
 # static routes
 @route('/img/<filename>')
