@@ -25,8 +25,8 @@ This part is a stub.
 The first line in `mok.py` after the import statements contains the 
 location for the database-file, which must be edited accordingly. 
 
-Currently the system isn't completed yet, so of course there is not much 
-provided in the sense of scaffolding or populating the database. 
+You can scaffold the required sqlite3 database using the `database.sql` 
+file. For example from a sqlite3 prompt: `sqlite> .read database.sql`
 
 ## Roadmap
 
