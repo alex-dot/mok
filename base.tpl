@@ -1,4 +1,4 @@
-% Mok_Title = 'Mit offenen Karten - ' + title
+% Mok_Title = 'No title - ' + title
 
 <!DOCTYPE html>
 <html lang="en">

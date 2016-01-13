@@ -1,9 +1,5 @@
 #page-container {
-    margin: 50px auto;
-}
-
-.video {
-    margin: auto;
+  margin: 50px auto;
 }
 
 #navbar .btn-group {
@@ -12,6 +8,22 @@
 #navbar button.btn a {
   padding: 0;
   color: black;
+}
+
+.video {
+  margin: auto;
+}
+.video-labels a,
+.video-labels a:hover,
+.video-labels a:visited,
+.video-labels a:focus {
+  text-decoration: none
+}
+.video-labels span {
+  display: inline-block;
+  margin-top: 10px;
+  height: 2em;
+  line-height: 1.5;
 }
 
 a.with-icon {

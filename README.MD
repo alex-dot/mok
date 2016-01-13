@@ -28,6 +28,13 @@ location for the database-file, which must be edited accordingly.
 You can scaffold the required sqlite3 database using the `database.sql` 
 file. For example from a sqlite3 prompt: `sqlite> .read database.sql`
 
+In the table `category_type` is a column named `type_id` which can be 
+used as a identifier for different types of categories, not just in name. 
+For example a category with the `type_id` of 0 might behave differently 
+as a category of 1, i.e. the first might be a simple Tags category where 
+each video might have a big number of values for, the latter might be a 
+category where each video might always have only one value for. 
+
 ## Roadmap
 
 It is planned to provide methods for creating, updating and deleting 

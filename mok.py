@@ -3,6 +3,7 @@ from bottle_sqlite import SQLitePlugin
 from argon2 import argon2_hash
 from Crypto import Random
 from binascii import hexlify
+import hashlib
 
 install( SQLitePlugin( dbfile='./database.db' ) )
 
@@ -60,9 +61,29 @@ def check_token(token, db=None):
 
 @route('/', template='page')
 @route('/<pageid>', template='page')
-def page(db, pageid='Die Präsidentschaftswahl in Birma'):
+def page(db, pageid='afrika-pflegt-europa'):
     logged_in = check_token( request.get_cookie("token"), db )
-    return dict(name=pageid, logged_in=logged_in)
+
+    # get the desired video
+    video = db.execute('SELECT * FROM video WHERE urlname=?', (pageid,)).fetchone()
+    if video == None:
+        abort(404, "No video found")
+
+    # get the categories...
+    category_types = db.execute('SELECT * FROM category_type').fetchall()
+    # ...and populate their values for the video
+    categories = dict()
+    for category in category_types:
+        categories[ category['id'] ] = dict(
+                category_title=category['title'],
+                category_escaped_title=category['escaped_title'], 
+                query=db.execute('\
+                            SELECT cv.title,cv.escaped_title\
+                            FROM video_category AS vc\
+                            JOIN category_value AS cv ON vc.cvid=cv.id\
+                            WHERE vc.vid=?\
+                            AND cv.ctid=?', (video['id'],category['id'])).fetchall())
+    return dict(name=pageid, video=video, categories=categories, logged_in=logged_in)
 
 @route('/add', template='edit')
 def add(db):
